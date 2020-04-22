@@ -1,7 +1,15 @@
 <template lang="html">
   <div>
 <header-item></header-item>
-<r-m-list :characters="characters"></r-m-list>
+<div >
+  <label for="character_select">Select a Character:</label>
+  <select id="character_select" v-model="selectedCharacter">
+    <option disabled value="">Select a Character</option>
+    <option v-for="character in characters" :value="character">{{character.name}}</option>
+  </select>
+
+</div>
+<!-- <r-m-list :characters="characters"></r-m-list> -->
 <character-detail v-if="selectedCharacter" :character="selectedCharacter"></character-detail>
 </div>
 </template>
@@ -22,7 +30,7 @@ export default {
 components:{
             "header-item": Header,
             "r-m-list": RMList,
-            'character-detail': CharacterDetail
+            'character-detail': CharacterDetail,
 
 },
 
