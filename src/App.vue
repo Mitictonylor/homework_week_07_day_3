@@ -1,14 +1,9 @@
 <template lang="html">
   <div>
 <header-item></header-item>
-<div >
-  <label for="character_select">Select a Character:</label>
-  <select id="character_select" v-model="selectedCharacter">
-    <option disabled value="">Select a Character</option>
-    <option v-for="character in characters" :value="character">{{character.name}}</option>
-  </select>
 
-</div>
+<select-character :characters="characters"></select-character>
+
 <!-- <r-m-list :characters="characters"></r-m-list> -->
 <character-detail v-if="selectedCharacter" :character="selectedCharacter"></character-detail>
 </div>
@@ -18,7 +13,9 @@
 import Header from "./components/Header.vue"
 import{eventBus} from './main.js'
 import RMList from "./components/RMList.vue"
+import SelectCharacter from './components/SelectCharacter.vue'
 import CharacterDetail from './components/CharacterDetail.vue'
+
 export default {
   name: "app",
   data() {
@@ -31,6 +28,7 @@ components:{
             "header-item": Header,
             "r-m-list": RMList,
             'character-detail': CharacterDetail,
+            'select-character': SelectCharacter
 
 },
 
@@ -43,6 +41,8 @@ mounted(){
 
   eventBus.$on('char-selected', (character) =>{
     this.selectedCharacter = character})
+
+    eventBus.$on('input',(selectedChar) => {this.selectedCharacter = selectedChar})
 }
 }
 </script>
