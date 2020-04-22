@@ -1,28 +1,19 @@
 <template lang="html">
-<div>
   <div>
     <h3>Filter characters</h3>
     <input type="text" v-model="char" value='' placeholder="start to type" >
   </div>
-  <ul>
-    <list-item v-for="(character,index) in filteredCharacters" :character="character" :key="index"></list-item>
-  </ul>
-
-</div>
 </template>
 
 <script>
-import RMItem from './RMItem.vue'
 export default {
-
-  name: "RMList",
-  props: ["characters"],
-  components: {
-    'list-item': RMItem
+  name:"Filtered",
+  data(){
+    return{
+      char:""
+    }
   },
-  data(){return{
-    char:""
-  }},
+  props:["characters"],
   computed:{
     filteredCharacters: function(){
 return this.characters.filter((character) => { return character.name.match(this.char)})

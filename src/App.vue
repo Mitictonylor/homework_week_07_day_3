@@ -2,9 +2,9 @@
   <div>
 <header-item></header-item>
 
-<select-character :characters="characters"></select-character>
-
-<!-- <r-m-list :characters="characters"></r-m-list> -->
+<!-- <select-character :characters="characters"></select-character> -->
+<!-- <filtered :characters="characters"></filtered> -->
+<r-m-list :characters="characters"></r-m-list>
 <character-detail v-if="selectedCharacter" :character="selectedCharacter"></character-detail>
 </div>
 </template>
@@ -13,6 +13,7 @@
 import Header from "./components/Header.vue"
 import{eventBus} from './main.js'
 import RMList from "./components/RMList.vue"
+// import Filtered from './components/Filtered.vue'
 import SelectCharacter from './components/SelectCharacter.vue'
 import CharacterDetail from './components/CharacterDetail.vue'
 
@@ -28,7 +29,8 @@ components:{
             "header-item": Header,
             "r-m-list": RMList,
             'character-detail': CharacterDetail,
-            'select-character': SelectCharacter
+            'select-character': SelectCharacter,
+            // 'filtered': Filtered
 
 },
 
