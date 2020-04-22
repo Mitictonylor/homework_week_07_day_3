@@ -2,22 +2,27 @@
   <div>
 <header-item></header-item>
 <r-m-list :characters="characters"></r-m-list>
+<character-detail v-if="selectedCharacter" :character="selectedCharacter"></character-detail>
 </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue"
+import{eventBus} from './main.js'
 import RMList from "./components/RMList.vue"
+import CharacterDetail from './components/CharacterDetail.vue'
 export default {
   name: "app",
   data() {
     return {
-      characters: []
+      characters: [],
+      selectedCharacter :null
     }},
 
 components:{
             "header-item": Header,
             "r-m-list": RMList,
+            'character-detail': CharacterDetail
 
 },
 
@@ -28,6 +33,8 @@ mounted(){
   fetch('https://rickandmortyapi.com/api/character/')
   .then(result => result.json()).then(characters => this.characters = characters.results)
 
+  eventBus.$on('char-selected', (character) =>{
+    this.selectedCharacter = character})
 }
 }
 </script>
