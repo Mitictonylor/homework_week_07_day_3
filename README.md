@@ -14,6 +14,13 @@ npm run serve
 ```
 npm run build
 ```
+Instruction:
+* if u want to see the list of the characters straight away and then the possibility to click on each element and see the details with the search bar:
+
+ from all the html code available comment out line 5 and 6
+
+* if u want a drop list:
+ from all the html code available comment out line 6 and 7
 
 ### BRIEF
 Rick and Morty - Multi Components Homework
