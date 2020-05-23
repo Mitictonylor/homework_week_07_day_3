@@ -12,6 +12,7 @@
 </template>
 
 <script>
+// import {eventBus} from'../main.js'
 import RMItem from './RMItem.vue'
 export default {
 
@@ -21,12 +22,18 @@ export default {
     'list-item': RMItem
   },
   data(){return{
-    char:""
+    char:"",
+    filteredArray: []
   }},
-  computed:{
+  computed:
+  {
     filteredCharacters: function(){
 return this.characters.filter((character) => { return character.name.match(this.char)})
     }
+  },
+  mounted(){
+    // eventBus.$on('filtered-array', (array) =>{
+    //   this.filteredArray = array})
   }
 }
 </script>
